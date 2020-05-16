@@ -14,8 +14,8 @@ var sketch = function (p) {
     var fontArial;
     var imageDragon;
     p.preload = function () {
-        fontArial = p.loadFont('images/arial.ttf');
-        imageDragon = p.loadImage('images/dragon.png');
+        fontArial = p.loadFont('https://tazcan.dev/images/arial.ttf');
+        imageDragon = p.loadImage('https://tazcan.dev/images/dragon.png');
     }
 
     p.setup = function () {
@@ -46,10 +46,12 @@ var sketch = function (p) {
         p.text(javapps, m, 340);
 
         p.noStroke();
-        p.square(
-            centerX + motionX,
-            centerY + motionY,
-            circleRadius
+        p.image(
+            imageDragon,
+            (centerX - (imageRadius/ 2)) + motionX,
+            (centerY - (imageRadius/ 2)) + motionY,
+            imageWidth / 2,
+            imageWidth / 2
         );
 
         p.image(
