@@ -1,3 +1,14 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+* {
+    margin: 0;
+}
+
 body {
     background-color: #faf4ff;
     font-family: sans-serif;
@@ -5,20 +16,35 @@ body {
     color: #10375c;
 }
 
-#container {
-    display: table;
-    }
-
-#column {
-    column-count: 1;
-    column-width: 100%;
-    display: table-column;
+h1 {
+    padding: 1rem;
+}
+#intro {
+    border-style: solid;
+    border-width: 4px;
+    border-color: #844685;
+    width: 608px;
+    margin: auto;
+    position: relative;
+}
+#intro-sketch canvas {
+    display: block;
+}
+#links a {
+    display: block;
+    position: absolute;
+    color:rgba(0, 0, 0, 0);
+}
+#link-animation {
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 200px;
 }
 
-#row  {
-    display: table-row;
-    }
-
-#middle {
-    display: table-cell;
-    }
+#link-apps {
+    top: 200px;
+    left: 0;
+    width: 600px;
+    height: 200px;
+}

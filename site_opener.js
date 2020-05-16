@@ -72,4 +72,4 @@ var sketch = function (p) {
         }
     }
 };
-new p5(sketch, 'sketch-holder1');
+new p5(sketch, 'intro-sketch');

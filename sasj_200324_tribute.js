@@ -10,7 +10,7 @@ var objectSpacing;
 
 function setup() {
   var canvas = createCanvas(400, 400);
-  canvas.parent('sketch-holder1');
+  canvas.parent('sasj-sketch');
   frameRate(30);
   lineWidth = width / 8;
   lineOffset = lineWidth / 2;
