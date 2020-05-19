@@ -48,3 +48,8 @@ h1 {
     width: 600px;
     height: 200px;
 }
+
+#about {
+    width: 700px;
+    margin: auto;
+}
