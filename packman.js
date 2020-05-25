@@ -4,7 +4,7 @@ var sketch = function(p) {
     function makeBlock(lastPoint) {
         if(cirX + 21 < lastPoint) {
             p.fill(200, 100, 200);
-            p.rect(lastPoint, height / 2, 10, 8);
+            p.rect(lastPoint, p.height / 2, 10, 8);
         }
     }
     
@@ -14,12 +14,19 @@ var sketch = function(p) {
         p.frameRate(24);
     }
     p.draw = function draw() { 
-        if(cirX <= width) {
+        if(cirX <= p.width) {
             p.background(0, 0, 0);    
             p.fill(100, 200, 100);
-            p.circle(cirX, height / 2, 50);
+            p.circle(cirX, p.height / 2, 50);
             p.fill(0, 0, 0);
-            p.triangle(cirX, height / 2, cirX + 25, (height / 2) + (cirX % 9), cirX + 25, (height / 2) - (cirX % 9));
+            p.triangle(
+                cirX, 
+                p.height / 2, 
+                cirX + 25, 
+                (p.height / 2) + (cirX % 9), 
+                cirX + 25, 
+                (p.height / 2) - (cirX % 9)
+            );
             cirX = cirX + speed;
             makeBlock(80);
             makeBlock(160);
@@ -32,7 +39,7 @@ var sketch = function(p) {
         }
     }
 };
-new p5(sketch, 'sketch-holder2');
+new window.p5(sketch, 'sketch-holder2');
 
 
 

@@ -1,7 +1,6 @@
 var sketch = function (p) {
     var centerX;
     var centerY;
-    var circleRadius;
     var imageRadius;
     var imageWidth;
     var frames = 60;
@@ -19,12 +18,11 @@ var sketch = function (p) {
     }
 
     p.setup = function () {
-        var canvas = p.createCanvas(600, 400);
+        p.createCanvas(600, 400);
         p.frameRate(30);
 
         centerX = p.width / 2;
         centerY = p.height / 2;
-        circleRadius = p.width / 20;
         imageRadius = p.width / 10;
         imageWidth = imageRadius * 2;
     }
@@ -74,4 +72,4 @@ var sketch = function (p) {
         }
     }
 };
-new p5(sketch, 'intro-sketch');
+new window.p5(sketch, 'intro-sketch');

@@ -4,7 +4,7 @@
   "description": "personal website of taz",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "homepage": "https://tazcan.dev/",
   "devDependencies": {
     "eslint": "^6.8.0",
+    "eslint-config-p5js": "^1.0.1",
     "eslint-plugin-es5": "^1.5.0"
   }
 }
