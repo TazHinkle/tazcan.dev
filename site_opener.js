@@ -30,8 +30,6 @@ var sketch = function (p) {
     p.draw = function () {  // draw() loops forever, until stopped
         var phase = (currentFrame / frames) % 1.0;
         var circleMovementRadius = p.width / 5;
-        var motionX = p.cos(p.TAU * phase) * circleMovementRadius;
-        var motionY = p.sin(p.TAU * phase) * circleMovementRadius;
         p.background(25);
         p.fill(160, 160, 255);
 
@@ -44,13 +42,23 @@ var sketch = function (p) {
         p.text(javapps, m, 340);
 
         p.noStroke();
+
+        p.push();
+        p.translate(
+            centerX,
+            centerY
+        );
+        p.rotate(p.TAU * phase);
+        p.translate(circleMovementRadius, 0);
+        p.rotate(p.PI);
         p.image(
             imageDragon,
-            (centerX - (imageRadius/ 2)) + motionX,
-            (centerY - (imageRadius/ 2)) + motionY,
+            -imageRadius / 2,
+            -imageRadius / 2,
             imageWidth / 2,
             imageWidth / 2
         );
+        p.pop();
 
         p.image(
             imageDragon,
