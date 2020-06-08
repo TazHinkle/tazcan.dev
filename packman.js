@@ -39,7 +39,7 @@ var sketch = function(p) {
         }
     }
 };
-new window.p5(sketch, 'sketch-holder2');
+new window.p5(sketch, 'packman-holder');
 
 
 
