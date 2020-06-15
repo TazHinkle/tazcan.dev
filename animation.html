@@ -42,6 +42,9 @@
         <script src="./packman.js"></script>
         <div id="svg-animation">
             <svg 
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 0 100 100"
                 width="400"
                 height="400"
@@ -50,54 +53,67 @@
                 <rect
                     width="120"
                     height="120"
-                    fill="#ccc"
+                    fill="#aaa"
                 />
                 <rect
                     width="100"
                     height="100"
-                    fill="#aaa"
+                    fill="#888"
                 />
                 <rect
                     width="80"
                     height="80"
-                    fill="#888"
+                    fill="#666"
                 />
                 <rect
                     width="60"
                     height="60"
-                    fill="#666"
+                    fill="#444"
                 />
                 <rect
                     width="40"
                     height="40"
-                    fill="#444"
-                />
-                <rect
-                    width="30"
-                    height="30"
                     fill="#222"
                 />
                 <rect
                     width="20"
                     height="20"
-                    fill="#111"
-                />
-                <rect
-                    width="10"
-                    height="10"
                     fill="#000"
                 />
-                <ellipse
-                    rx="5"
-                    ry="5"
+                <circle
+                    r="10"
                     cx="10"
                     cy="20"
                     fill="rgb(55,20,110)"
                     id="my-ball"
                 />
+                <animate
+                    xlink:href="#my-ball"
+                    attributeName="cy"
+                    from="20"
+                    to="400"
+                    dur="6s"
+                    repeatCount="indefinite"
+                />
+                <animate
+                    xlink:href="#my-ball"
+                    attributeName="cx"
+                    from="10"
+                    to="270"
+                    dur="6s"
+                    repeatCount="indefinite"
+                />
+                <animate
+                    xlink:href="#my-ball"
+                    attributeName="r"
+                    from="5"
+                    to="25"
+                    dur="6s"
+                    repeatCount="indefinite"
+                />
             </svg>
         </div>
-        <p style="color:#faf4ff;">SVG design, pre-animation</p>
+        <p style="color:#faf4ff;">SVG animation</p>
         <div id="footer">
             <a href="index.html">Home</a> |
             <a href ="animation.html">Animations</a> |
