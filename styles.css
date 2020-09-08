@@ -55,6 +55,13 @@ h1 {
     margin: auto;
 }
 
+#links {
+    padding-top: 30px;
+    align-content: center;
+    width: 700px;
+    margin: auto;
+}
+
 #footer {
     padding: 50px;
     padding-top: 100px;
