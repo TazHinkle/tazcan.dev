@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Toys0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <style type="text/css">
+        audio {
+            display: none;
+        }
+        .silenced {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body class="toy-background">
+    <header>
+        <h1>Elements</h1>
+    </header>
+
+    <div class="toy-holder">
+        <div class="control-div">
+            <button id="start-button">Start</button>
+            <button id="stop-button">Stop</button>
+        </div>
+        <div class="layer-div">
+            <button class="layer-toggle" data-layer="0">Layer 1</button>
+            <button class="layer-toggle" data-layer="1">Layer 2</button>
+            <button class="layer-toggle" data-layer="2">Layer 3</button>
+            <button class="layer-toggle" data-layer="3">Layer 4</button>
+        </div>
+    </div>
+    <audio id="layer1" controls>
+        <source src="layer1.mp3" type="audio/mpeg"/>
+    </audio>
+    <audio id="layer2" controls>
+        <source src="layer2.mp3" type="audio/mpeg"/>
+    </audio>
+    <audio id="layer3" controls>
+        <source src="layer3.mp3" type="audio/mpeg"/>
+    </audio>
+    <audio id="layer4" controls>
+        <source src="layer4.mp3" type="audio/mpeg"/>
+    </audio>
+
+    <script src="./toy0.js"></script>
+</body>
+
+</html>
