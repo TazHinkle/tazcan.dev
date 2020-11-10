@@ -9,9 +9,39 @@
         audio {
             display: none;
         }
-        .silenced {
-            opacity: 0.5;
+        .layer1-toggle {
+            background-color: #f1f3f8;
+            top: 0;
+            left: 0;
         }
+        .layer2-toggle {
+            background-color: #d6e0f0;
+            top: 0;
+            right: 0;
+        }
+        .layer3-toggle {
+            background-color: #8d93ab;
+            bottom: 0;
+            left: 0;
+        }
+        .layer4-toggle {
+            background-color: #393b44;
+            bottom: 0;
+            right: 0;
+        }
+        .layer-toggle {
+            height: 50%;
+            width: 50%;
+            position: absolute;
+            display: block;
+            border: 0;
+            transition: all 0.125s ease-in-out;
+        }
+        .layer-toggle.silenced {
+            height: 25%;
+            width: 25%;
+        }
+
     </style>
 </head>
 
@@ -20,16 +50,16 @@
         <h1>Elements</h1>
     </header>
 
+    <div class="control-div">
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+    </div>
     <div class="toy-holder">
-        <div class="control-div">
-            <button id="start-button">Start</button>
-            <button id="stop-button">Stop</button>
-        </div>
         <div class="layer-div">
-            <button class="layer-toggle" data-layer="0">Layer 1</button>
-            <button class="layer-toggle" data-layer="1">Layer 2</button>
-            <button class="layer-toggle" data-layer="2">Layer 3</button>
-            <button class="layer-toggle" data-layer="3">Layer 4</button>
+            <button class="layer-toggle layer1-toggle" data-layer="0">Layer 1</button>
+            <button class="layer-toggle layer2-toggle" data-layer="1">Layer 2</button>
+            <button class="layer-toggle layer3-toggle" data-layer="2">Layer 3</button>
+            <button class="layer-toggle layer4-toggle" data-layer="3">Layer 4</button>
         </div>
     </div>
     <audio id="layer1" controls>
