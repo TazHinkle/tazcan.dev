@@ -16,14 +16,55 @@ var stopButton = document.getElementById('stop-button');
 stopButton.addEventListener('click', function () {
     audio.pause();
 });
+
 var tau = Math.PI * 2;
 var getCoordinatesFromWiggle = function(wiggle, time) {
     var angle = tau * wiggle.speed * (time + wiggle.phase);
     return {
         x: (Math.cos(angle) * wiggle.radius) + wiggle.x,
-        y: (Math.sin(angle) * wiggle.radius) + wiggle.y,
+        y: (Math.sin(angle) * wiggle.radius) + wiggle.y
     }
 }
+
+var getRandomInt = function(max) {
+    return Math.floor(Math.random() * Math.floor(max - 1)) + 1;
+}
+
+var generateWiggle = function(x, y) {
+    return {
+        speed: getRandomInt(2),
+        phase: Math.random(),
+        radius: 4 + getRandomInt(4),
+        x: x,
+        y: y
+    };
+};
+
+var wiggles = [
+    generateWiggle(240, 380),
+    generateWiggle(260, 380),
+    generateWiggle(280, 380),
+    generateWiggle(300, 380)
+];
+
+toyCanvas.addEventListener('click', function (event) {
+    console.log(event);
+    wiggles.push(generateWiggle(event.offsetX, event.offsetY));
+});
+
+var drawGrassBlade = function(wiggle, time) {
+    var grassBladeLength = 200;
+    var grass = getCoordinatesFromWiggle(wiggle, time);
+    context.beginPath();
+    context.moveTo(wiggle.x, wiggle.y);
+    context.lineTo(grass.x, wiggle.y - (grassBladeLength / 2));
+    context.lineTo(grass.x, wiggle.y - grassBladeLength);
+    context.strokeStyle = 'rgb(0, 140, 60)';
+    context.fillStyle = 'rgb(0, 255, 0)';
+    context.stroke();
+    context.fill();
+};
+
 var animationLoop = function(time) {
     var numberOfSecondsSincePageLoad = time / 1000;
     requestAnimationFrame(animationLoop);
@@ -33,36 +74,10 @@ var animationLoop = function(time) {
         toyCanvas.width,
         toyCanvas.height
     );
-    var wiggle = {
-        speed: 1,
-        phase: 0,
-        radius: 55,
-        x: toyCanvas.width / 2,
-        y: toyCanvas.height / 2
-    };
-    var wiggleBlue = {
-        speed: 2,
-        phase: 1,
-        radius: 45,
-        x: toyCanvas.width / 4,
-        y: toyCanvas.height / 2
-    };
-    var greenRectCoords = getCoordinatesFromWiggle(wiggle, numberOfSecondsSincePageLoad);
-    var blueRectCoords = getCoordinatesFromWiggle(wiggleBlue, numberOfSecondsSincePageLoad);
-    context.fillStyle = 'green';
-    context.fillRect(
-        greenRectCoords.x,
-        greenRectCoords.y,
-        150,
-        100
-    );
-    context.fillStyle = 'blue';
-    context.fillRect(
-        blueRectCoords.x,
-        blueRectCoords.y,
-        111,
-        95
-    );
+
+    wiggles.forEach(function(wiggle) {
+        drawGrassBlade(wiggle, numberOfSecondsSincePageLoad);
+    });
 }
 
 requestAnimationFrame(animationLoop);
