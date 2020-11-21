@@ -48,7 +48,6 @@ var wiggles = [
 ];
 
 toyCanvas.addEventListener('click', function (event) {
-    console.log(event);
     wiggles.push(generateWiggle(event.offsetX, event.offsetY));
 });
 
