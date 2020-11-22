@@ -65,7 +65,16 @@ h1 {
     position: absolute;
     background-color: #faf4ff;
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+}.dropdown-toys {
+    display: none;
+    right: 200px;
+    position: absolute;
+    background-color: #faf4ff;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -83,6 +92,23 @@ h1 {
 }
 
 .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-toys a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-toys a:hover {
+    background-color: rgb(160, 160, 255);
+}
+
+.dropdown:hover .dropdown-toys {
     display: block;
 }
 

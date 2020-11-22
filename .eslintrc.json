@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es6": false
+        "es6": true
     },
     "plugins": [
         "es5"

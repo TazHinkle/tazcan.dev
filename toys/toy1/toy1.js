@@ -36,7 +36,10 @@ var generateWiggle = function(x, y) {
         phase: Math.random(),
         radius: 4 + getRandomInt(4),
         x: x,
-        y: y
+        y: y,
+        strokeStyle: `hsl(${60 + (Math.random() * 60)}, 80%, 20%)`,
+        fillStyle: `hsl(${60 + (Math.random() * 60)}, 90%, 30%)`,
+        height: (Math.random() * 50) + 50
     };
 };
 
@@ -47,19 +50,19 @@ var wiggles = [
     generateWiggle(300, 380)
 ];
 
-toyCanvas.addEventListener('click', function (event) {
+toyCanvas.addEventListener('mousemove', function (event) {
     wiggles.push(generateWiggle(event.offsetX, event.offsetY));
 });
 
 var drawGrassBlade = function(wiggle, time) {
-    var grassBladeLength = 200;
+    var grassBladeLength = wiggle.height;
     var grass = getCoordinatesFromWiggle(wiggle, time);
     context.beginPath();
     context.moveTo(wiggle.x, wiggle.y);
     context.lineTo(grass.x, wiggle.y - (grassBladeLength / 2));
     context.lineTo(grass.x, wiggle.y - grassBladeLength);
-    context.strokeStyle = 'rgb(0, 140, 60)';
-    context.fillStyle = 'rgb(0, 255, 0)';
+    context.strokeStyle = wiggle.strokeStyle;
+    context.fillStyle = wiggle.fillStyle;
     context.stroke();
     context.fill();
 };

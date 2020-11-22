@@ -8,7 +8,7 @@ var sketch = function (p) {
     var n = 0;
     var m = 600.0;
     var animations = "Animations";
-    var javapps = "Java Apps";
+    var javapps = "Projects";
 
     var fontArial;
     var imageDragon;
