@@ -67,15 +67,6 @@ h1 {
     min-width: 200px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-
-}.dropdown-toys {
-    display: none;
-    right: 200px;
-    position: absolute;
-    background-color: #faf4ff;
-    min-width: 200px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    z-index: 1;
 }
 
 .dropdown-content a {
@@ -93,19 +84,6 @@ h1 {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.dropdown-toys a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-toys a:hover {
-    background-color: rgb(160, 160, 255);
 }
 
 .dropdown:hover .dropdown-toys {
@@ -152,7 +130,7 @@ h1 {
 
 #about {
     display: block;
-    width: 700px;
+    width: 512px;
     margin: auto;
 }
 

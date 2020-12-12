@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Toys2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <style type="text/css">
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="toy-background">
+    <div class="navbar">
+        <a href="../../index.html">Home</a>
+        <a href="animation.html">Animations</a>
+        <a href="about.html">About Me</a>
+        <span class="dropdown">
+            <a href="links.html" class="dropbtn">Other Projects</a>
+            <span class="dropdown-content">
+                <a href="../index.html">Toy Box</a>
+                <a href="https://tazhinkle.github.io/dnd-monster-charts/" target="_blank">D&D Monster Charts</a>
+                <a href="https://dc801.store/products/dc801-safemode-badge" target="_blank">DC801 Defcon badge</a>
+                <a href="https://github.com/TazHinkle/" target="_blank">GitHub Profile</a>
+                <a href="video.html">Java Projects</a>
+                <a href="https://tazhinkle.github.io/tictactoe/" target="_blank">TicTacToe</a>
+            </span>
+        </span>
+    </div>
+    <header>
+        <h1>Darts</h1>
+    </header>
+
+    <div class="control-div">
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+    </div>
+    <div class="toy-holder">
+        <canvas
+            id="toy-canvas"
+            height="512"
+            width="512"
+        ></canvas>
+    </div>
+    <audio id="layer1" controls>
+        <source src="short-prog1.mp3" type="audio/mpeg"/>
+    </audio>
+
+    <script src="./toy2.js"></script>
+</body>
+
+</html>
