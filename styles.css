@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    background-color: #faf4ff;
+    background-color: #fdf9ff;
     font-family: sans-serif;
     text-align: center;
     color: #10375c;
@@ -34,7 +34,7 @@ h1 {
 .navbar .dropdown .dropbtn {
     display: inline-block;
     font-size: 16px;
-    color: #faf4ff;
+    color: #fdf9ff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -55,7 +55,7 @@ h1 {
 
 .navbar a:hover,
 .dropdown:hover .dropbtn {
-    background-color: #faf4ff;
+    background-color: #fdf9ff;
     color: black;
 }
 
@@ -63,7 +63,7 @@ h1 {
     display: none;
     right: 0;
     position: absolute;
-    background-color: #faf4ff;
+    background-color: #fdf9ff;
     min-width: 200px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;

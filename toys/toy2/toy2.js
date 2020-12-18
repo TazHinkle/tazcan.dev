@@ -14,6 +14,10 @@ stopButton.addEventListener('click', function () {
     audio.pause();
 });
 
+var currentTarget = {
+    x: toyCanvas.width / 2,
+    y: toyCanvas.height / 4
+};
 var tau = Math.PI * 2;
 var getCoordinatesFromAngleAndLength = function(angle, length) {
     return {
@@ -54,6 +58,37 @@ var drawPolyLine = function(points, offset) {
     // context.fill();
 };
 
+var drawTarget = function (x) {
+    context.beginPath();
+    context.arc(
+        x,
+        toyCanvas.height / 4,
+        25,
+        0,
+        tau
+    );
+    currentTarget = {
+        x: x,
+        y: toyCanvas.height / 4
+    }
+    context.strokeStyle = 'white';
+    context.fillStyle = 'white';
+    context.stroke();
+    context.fill();
+    context.beginPath();
+    context.arc(
+        x,
+        toyCanvas.height / 4,
+        12,
+        0,
+        tau
+    );
+    context.strokeStyle = 'red';
+    context.fillStyle = 'red';
+    context.stroke();
+    context.fill();
+}
+
 var cursorPosition = {
     x: toyCanvas.width / 2,
     y: toyCanvas.height / 2
@@ -62,6 +97,10 @@ var lastCursorPosition = {
     x: toyCanvas.width / 2,
     y: toyCanvas.height / 2
 }
+
+// var currentDart = {
+//     cursorPosition
+// }
 
 var dartAngle = 0;
 
@@ -72,6 +111,13 @@ toyCanvas.addEventListener('mousemove', function (event) {
     cursorPosition.y = event.offsetY;
     var differenceVector = subtractPoints(cursorPosition, lastCursorPosition);
     dartAngle = Math.atan2(differenceVector.y, differenceVector.x);
+});
+
+toyCanvas.addEventListener('mouseup', function (event) {
+    console.log("mouseup, yo", event);
+    console.log(currentTarget, cursorPosition);
+    currentTarget.x = event.offsetX;
+    // drawDart(currentTarget, dartAngle);
 });
 
 var subtractPoints = function (pointA, pointB) {
@@ -92,6 +138,7 @@ var animationLoop = function() {
     );
 
     drawDart(cursorPosition, dartAngle);
+    drawTarget(currentTarget.x);
 }
 
 requestAnimationFrame(animationLoop);
