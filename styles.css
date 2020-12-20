@@ -16,7 +16,7 @@ html {
 }
 
 body {
-    background-color: #fdf9ff;
+    background-color: #e1e1ff;
     font-family: sans-serif;
     text-align: center;
     color: #10375c;
@@ -27,14 +27,14 @@ h1 {
 }
 
 .navbar {
-    background-color: rgb(160, 160, 255);
+    background-color: rgb(100, 5, 255);
 }
 
 .navbar a,
 .navbar .dropdown .dropbtn {
     display: inline-block;
     font-size: 16px;
-    color: #fdf9ff;
+    color: #e1e1ff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -55,7 +55,7 @@ h1 {
 
 .navbar a:hover,
 .dropdown:hover .dropbtn {
-    background-color: #fdf9ff;
+    background-color: #e1e1ff;
     color: black;
 }
 
@@ -63,7 +63,7 @@ h1 {
     display: none;
     right: 0;
     position: absolute;
-    background-color: #fdf9ff;
+    background-color: #e1e1ff;
     min-width: 200px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -94,7 +94,7 @@ h1 {
     max-width: 100%;
     border-style: solid;
     border-width: 4px;
-    border-color: #844685;
+    border-color: rgb(100, 5, 255);
     width: 608px;
     margin: auto;
 }
@@ -148,7 +148,7 @@ h1 {
 }
 
 .toy-holder {
-    background-color: #844685;
+    background-color: rgb(100, 5, 255);
     position: absolute;
     width: 512px;
     height: 512px;

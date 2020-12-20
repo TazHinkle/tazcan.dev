@@ -68,8 +68,8 @@ var sketch = function (p) {
             imageWidth
         );
 
-        n = n + currentFrame;
-        m = m - currentFrame;
+        n = n + 10;
+        m = m - 10;
         currentFrame++;
 
         if (n >= p.width) {
