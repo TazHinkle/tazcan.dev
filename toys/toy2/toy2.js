@@ -53,33 +53,38 @@ var drawPolyLine = function(points, offset) {
         );
     })
     context.strokeStyle = 'red';
-    // context.fillStyle = wiggle.fillStyle;
     context.stroke();
-    // context.fill();
 };
 
-var drawTarget = function (x) {
+var makeTarget = function() {
+    return {
+        x: Math.random() * toyCanvas.width,
+        y: toyCanvas.height / 4,
+        radius: toyCanvas.height / ((Math.random() * 5) + 5)
+    };
+};
+
+var currentTarget = makeTarget();
+
+var drawTarget = function (target) {
     context.beginPath();
     context.arc(
-        x,
-        toyCanvas.height / 4,
-        25,
+        target.x,
+        target.y,
+        target.radius,
         0,
         tau
     );
-    currentTarget = {
-        x: x,
-        y: toyCanvas.height / 4
-    }
     context.strokeStyle = 'white';
     context.fillStyle = 'white';
     context.stroke();
     context.fill();
+
     context.beginPath();
     context.arc(
-        x,
-        toyCanvas.height / 4,
-        12,
+        target.x,
+        target.y,
+        target.radius / 2,
         0,
         tau
     );
@@ -98,9 +103,9 @@ var lastCursorPosition = {
     y: toyCanvas.height / 2
 }
 
-// var currentDart = {
-//     cursorPosition
-// }
+var currentDart = {
+    cursorPosition
+}
 
 var dartAngle = 0;
 
@@ -127,8 +132,26 @@ var subtractPoints = function (pointA, pointB) {
     };
 }
 
+var getLength = function(pointA, pointB) {
+    var diffPoint = subtractPoints(pointA, pointB);
+    return Math.sqrt((diffPoint.x * diffPoint.x) + (diffPoint.y * diffPoint.y));
+};
+
+var isDartOnScreen = function(currentDart) {
+    return (
+        currentDart.x > toyCanvas.width ||
+        currentDart.y > toyCanvas.height ||
+        currentDart.x < 0 ||
+        currentDart.y < 0
+    );
+}
+
+var isDartCollidingWithTarget = function(currentDart, currentTarget) {
+    var distanceToTargetCenter = getLength(currentDart, currentTarget);
+    return (distanceToTargetCenter < currentTarget.radius);
+}
+
 var animationLoop = function() {
-    // var numberOfSecondsSincePageLoad = time / 1000;
     requestAnimationFrame(animationLoop);
     context.clearRect(
         0,
@@ -138,7 +161,10 @@ var animationLoop = function() {
     );
 
     drawDart(cursorPosition, dartAngle);
-    drawTarget(currentTarget.x);
+    drawTarget(currentTarget);
+    if(isDartCollidingWithTarget(cursorPosition, currentTarget)) {
+        currentTarget = makeTarget();
+    }
 }
 
 requestAnimationFrame(animationLoop);
