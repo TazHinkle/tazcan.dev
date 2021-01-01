@@ -20,7 +20,8 @@ var getCoordinatesFromAngleAndLength = function(angle, length) {
         y: (Math.sin(angle) * length),
     };
 };
-
+var playerYLimit = toyCanvas.height * (2 / 3);
+var score = 0;
 var dartSize = 20;
 var dartAngleA = (5 / 12) * tau;
 var dartAngleB = (0 / 12) * tau;
@@ -32,6 +33,17 @@ var drawDart = function(point, angle) {
         getCoordinatesFromAngleAndLength(angle + dartAngleC, dartSize),
     ];
     drawPolyLine(points, point);
+};
+
+var drawScoreText = function() {
+    var measurement = toyCanvas.width / 20;
+    context.fillStyle = '#ffffff';
+    context.font = measurement + 'px sans-serif';
+    context.fillText(
+        'score: ' + score,
+        measurement,
+        measurement * 1.5
+    );
 };
 
 var drawPolyLine = function(points, offset) {
@@ -115,7 +127,10 @@ toyCanvas.addEventListener('mousemove', function (event) {
     lastCursorPosition.y = cursorPosition.y;
     cursorPosition.x = event.offsetX;
     cursorPosition.y = event.offsetY;
-    if (!isDartFlying) {
+    if (
+        !isDartFlying &&
+        cursorPosition.y > playerYLimit
+    ) {
         currentDart.x = cursorPosition.x;
         currentDart.y = cursorPosition.y;
         relativeMotionVector = subtractPoints(cursorPosition, lastCursorPosition);
@@ -124,8 +139,10 @@ toyCanvas.addEventListener('mousemove', function (event) {
 });
 
 toyCanvas.addEventListener('mouseup', function () {
-    console.log("relativeMotionVector", relativeMotionVector);
-    isDartFlying = true;
+    if(cursorPosition.y > playerYLimit) {
+        console.log("relativeMotionVector", relativeMotionVector);
+        isDartFlying = true;
+    }
 });
 
 var subtractPoints = function (pointA, pointB) {
@@ -153,18 +170,28 @@ var isDartOffScreen = function(currentDart) {
         currentDart.x < 0 ||
         currentDart.y < 0
     );
-}
+};
+
+var drawPlayerTable = function () {
+    context.fillStyle = '#1a6d07';
+    context.fillRect(
+        0,
+        playerYLimit,
+        toyCanvas.width,
+        toyCanvas.height - playerYLimit
+    );
+};
 
 var resetDart = function() {
     isDartFlying = false;
     currentDart.x = cursorPosition.x;
     currentDart.y = cursorPosition.y;
-}
+};
 
 var isDartCollidingWithTarget = function(currentDart, currentTarget) {
     var distanceToTargetCenter = getLength(currentDart, currentTarget);
     return (distanceToTargetCenter < currentTarget.radius);
-}
+};
 
 var animationLoop = function() {
     requestAnimationFrame(animationLoop);
@@ -174,20 +201,24 @@ var animationLoop = function() {
         toyCanvas.width,
         toyCanvas.height
     );
+    playerYLimit = toyCanvas.height * (2 / 3);
+    drawPlayerTable();
+    drawTarget(currentTarget);
+    drawDart(currentDart, currentDart.angle);
     if(isDartFlying) {
         var dartPositionPlusRelativeMotionVector = addPoints(currentDart, relativeMotionVector);
         currentDart.x = dartPositionPlusRelativeMotionVector.x;
         currentDart.y = dartPositionPlusRelativeMotionVector.y;
+        if(isDartCollidingWithTarget(currentDart, currentTarget)) {
+            score++;
+            currentTarget = makeTarget();
+            resetDart();
+        }
+        if(isDartOffScreen(currentDart)) {
+            resetDart();
+        }
     }
-    drawTarget(currentTarget);
-    drawDart(currentDart, currentDart.angle);
-    if(isDartCollidingWithTarget(currentDart, currentTarget)) {
-        currentTarget = makeTarget();
-        resetDart();
-    }
-    if(isDartOffScreen(currentDart)) {
-        resetDart();
-    }
+    drawScoreText();
 };
 
 requestAnimationFrame(animationLoop);
