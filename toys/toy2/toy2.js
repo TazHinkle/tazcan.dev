@@ -1,4 +1,3 @@
-
 var toyCanvas = document.getElementById('toy-canvas');
 var audio = document.getElementById('layer1');
 var context = toyCanvas.getContext('2d');
@@ -14,17 +13,13 @@ stopButton.addEventListener('click', function () {
     audio.pause();
 });
 
-var currentTarget = {
-    x: toyCanvas.width / 2,
-    y: toyCanvas.height / 4
-};
 var tau = Math.PI * 2;
 var getCoordinatesFromAngleAndLength = function(angle, length) {
     return {
         x: (Math.cos(angle) * length),
         y: (Math.sin(angle) * length),
-    }
-}
+    };
+};
 
 var dartSize = 20;
 var dartAngleA = (5 / 12) * tau;
@@ -37,7 +32,7 @@ var drawDart = function(point, angle) {
         getCoordinatesFromAngleAndLength(angle + dartAngleC, dartSize),
     ];
     drawPolyLine(points, point);
-}
+};
 
 var drawPolyLine = function(points, offset) {
     context.beginPath();
@@ -51,7 +46,7 @@ var drawPolyLine = function(points, offset) {
             point.x + offset.x,
             point.y + offset.y
         );
-    })
+    });
     context.strokeStyle = 'red';
     context.stroke();
 };
@@ -97,32 +92,40 @@ var drawTarget = function (target) {
 var cursorPosition = {
     x: toyCanvas.width / 2,
     y: toyCanvas.height / 2
-}
+};
 var lastCursorPosition = {
     x: toyCanvas.width / 2,
     y: toyCanvas.height / 2
-}
+};
 
 var currentDart = {
-    cursorPosition
-}
+    x: 0,
+    y: 0,
+    angle: 0
+};
 
-var dartAngle = 0;
+var isDartFlying = false;
+var relativeMotionVector = {
+    x: 0,
+    y: 0,
+};
 
 toyCanvas.addEventListener('mousemove', function (event) {
     lastCursorPosition.x = cursorPosition.x;
     lastCursorPosition.y = cursorPosition.y;
     cursorPosition.x = event.offsetX;
     cursorPosition.y = event.offsetY;
-    var differenceVector = subtractPoints(cursorPosition, lastCursorPosition);
-    dartAngle = Math.atan2(differenceVector.y, differenceVector.x);
+    if (!isDartFlying) {
+        currentDart.x = cursorPosition.x;
+        currentDart.y = cursorPosition.y;
+        relativeMotionVector = subtractPoints(cursorPosition, lastCursorPosition);
+        currentDart.angle = Math.atan2(relativeMotionVector.y, relativeMotionVector.x);
+    }
 });
 
-toyCanvas.addEventListener('mouseup', function (event) {
-    console.log("mouseup, yo", event);
-    console.log(currentTarget, cursorPosition);
-    currentTarget.x = event.offsetX;
-    // drawDart(currentTarget, dartAngle);
+toyCanvas.addEventListener('mouseup', function () {
+    console.log("relativeMotionVector", relativeMotionVector);
+    isDartFlying = true;
 });
 
 var subtractPoints = function (pointA, pointB) {
@@ -130,20 +133,32 @@ var subtractPoints = function (pointA, pointB) {
         x: pointA.x - pointB.x,
         y: pointA.y - pointB.y,
     };
-}
+};
+var addPoints = function (pointA, pointB) {
+    return {
+        x: pointA.x + pointB.x,
+        y: pointA.y + pointB.y,
+    };
+};
 
 var getLength = function(pointA, pointB) {
     var diffPoint = subtractPoints(pointA, pointB);
     return Math.sqrt((diffPoint.x * diffPoint.x) + (diffPoint.y * diffPoint.y));
 };
 
-var isDartOnScreen = function(currentDart) {
+var isDartOffScreen = function(currentDart) {
     return (
         currentDart.x > toyCanvas.width ||
         currentDart.y > toyCanvas.height ||
         currentDart.x < 0 ||
         currentDart.y < 0
     );
+}
+
+var resetDart = function() {
+    isDartFlying = false;
+    currentDart.x = cursorPosition.x;
+    currentDart.y = cursorPosition.y;
 }
 
 var isDartCollidingWithTarget = function(currentDart, currentTarget) {
@@ -159,12 +174,20 @@ var animationLoop = function() {
         toyCanvas.width,
         toyCanvas.height
     );
-
-    drawDart(cursorPosition, dartAngle);
-    drawTarget(currentTarget);
-    if(isDartCollidingWithTarget(cursorPosition, currentTarget)) {
-        currentTarget = makeTarget();
+    if(isDartFlying) {
+        var dartPositionPlusRelativeMotionVector = addPoints(currentDart, relativeMotionVector);
+        currentDart.x = dartPositionPlusRelativeMotionVector.x;
+        currentDart.y = dartPositionPlusRelativeMotionVector.y;
     }
-}
+    drawTarget(currentTarget);
+    drawDart(currentDart, currentDart.angle);
+    if(isDartCollidingWithTarget(currentDart, currentTarget)) {
+        currentTarget = makeTarget();
+        resetDart();
+    }
+    if(isDartOffScreen(currentDart)) {
+        resetDart();
+    }
+};
 
 requestAnimationFrame(animationLoop);
