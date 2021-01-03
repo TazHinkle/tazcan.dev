@@ -1,5 +1,5 @@
 var toyCanvas = document.getElementById('toy-canvas');
-var audio = document.getElementById('carni1');
+var audio = document.getElementById('layer1');
 var context = toyCanvas.getContext('2d');
 
 var startButton = document.getElementById('start-button');
