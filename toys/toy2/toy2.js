@@ -273,6 +273,7 @@ var animationLoop = function() {
     drawPlayerTable();
     if(currentTarget) {
         drawTarget(currentTarget);
+        drawScoreText();
     }
     if(currentDart) {
         drawDart(currentDart, currentDart.angle);
@@ -293,7 +294,7 @@ var animationLoop = function() {
     if(isGameOver) {
         drawGameOver();
     }
-    drawScoreText();
+
 };
 
 requestAnimationFrame(animationLoop);
