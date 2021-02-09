@@ -143,7 +143,11 @@ h1 {
     background-color: #10375c;
 }
 
-.toy-background h1, p {
+.toy-background h1 {
+    color: aliceblue;
+}
+
+.toy-background p {
     color: aliceblue;
 }
 
