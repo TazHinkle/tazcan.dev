@@ -68,8 +68,12 @@
     </header>
 
     <div class="control-div">
-        <button id="start-button">Start</button>
-        <button id="stop-button">Stop</button>
+        <button
+			id="start-button"
+			style="padding-left: 12px;
+			padding-right: 12px;"
+		>Music</button>
+        <button id="stop-button">Silence</button>
     </div>
     <div class="toy-holder">
         <div class="layer-div">
@@ -79,7 +83,11 @@
             <button class="layer-toggle layer4-toggle" data-layer="3">Layer 4</button>
         </div>
     </div>
-    <audio id="layer1" controls>
+	<div>
+		<p style="padding: 15px;">
+			Clicking the boxes will minimize and maximize them- also effecting which part of the song is playing.</p>
+	</div>
+	<audio id="layer1" controls>
         <source src="layer1.mp3" type="audio/mpeg"/>
     </audio>
     <audio id="layer2" controls>
@@ -93,6 +101,9 @@
     </audio>
 
     <script src="./toy0.js"></script>
+
+
+
 </body>
 
 </html>
