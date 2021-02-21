@@ -1,5 +1,8 @@
 Website Redesign
 
+Background image:
+Circuit board from http://www.heropatterns.com/
+
 Write about the projects I have done and describe the development aspects.
 Have organized link outs to github etc.
 Long, scrolling front pages seem popular in portfolios- vs. short landing page.
