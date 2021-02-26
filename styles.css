@@ -27,7 +27,7 @@ body {
 h1 {
     padding: 32px;
 }
-
+/*Main Page*/
 .project-holder {
     display: block;
     margin: 2% 10% 2% 10%;
@@ -68,6 +68,31 @@ h1 {
  padding: 8px;
 }
 
+/*Individual Projects*/
+.details-top-image img, p {
+    padding: 16px;
+}
+
+.details-introduction .details-top-image, .details-bullets{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.details-bullets ul li {
+    text-align: left;
+}
+
+.details-description {
+    text-align: left;
+    padding: 16px;
+}
+
+.details-more-images {
+    padding: 8px;
+    flex-direction: column;
+}
+
+/*Toys*/
 .toy-background {
     background-color: #10375c;
 }
@@ -121,5 +146,25 @@ h1 {
 
     .project-holder.left .image-holder {
         right: 16px;
+    }
+
+    .details-description {
+        padding: 16px 62px 16px 62px;
+    }
+
+    .details-more-images {
+        flex-direction: row;
+    }
+
+    .details-more-images img {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+@media (min-width: 900px) {
+    .details-description {
+        padding: 16px 84px 16px 84px;
     }
 }
