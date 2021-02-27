@@ -69,6 +69,11 @@ h1 {
 }
 
 /*Individual Projects*/
+
+.details-title h2{
+    padding: 32px;
+}
+
 .details-top-image img, p {
     padding: 16px;
 }
