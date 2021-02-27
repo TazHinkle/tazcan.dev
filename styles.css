@@ -92,6 +92,10 @@ h1 {
     flex-direction: column;
 }
 
+.details-more-images img {
+    padding-top: 8px;
+}
+
 /*Toys*/
 .toy-background {
     background-color: #10375c;
