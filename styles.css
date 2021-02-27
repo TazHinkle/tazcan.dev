@@ -101,6 +101,10 @@ h1 {
     padding-top: 8px;
 }
 
+.details-more-images a {
+    text-decoration: none;
+}
+
 /*Toys*/
 .toy-background {
     background-color: #10375c;
