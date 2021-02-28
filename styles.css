@@ -34,6 +34,16 @@ h1 {
     border-style: solid;
     padding: 16px;
     position: relative;
+    animation-duration: 1s;
+    overflow: hidden;
+}
+
+.project-holder.left {
+    animation-name: slidein;
+}
+
+.project-holder.right {
+    animation-name: slideinright;
 }
 
 .project-holder:hover {
@@ -90,6 +100,8 @@ h1 {
 .details-description {
     text-align: left;
     padding: 16px;
+    max-width: 960px;
+    margin: auto;
 }
 
 .details-more-images {
@@ -128,6 +140,30 @@ h1 {
     bottom: 5px;
     left: 0;
     margin: auto;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 80%;
+    }
+
+    to {
+        margin-left: 10%;
+        width: 80%;
+    }
+}
+
+@keyframes slideinright {
+    from {
+        margin-left: -100%;
+        width: 80%;
+    }
+
+    to {
+        margin-left: 10%;
+        width: 80%;
+    }
 }
 
 @media (min-width: 500px) {
@@ -175,9 +211,3 @@ h1 {
     }
 }
 
-
-@media (min-width: 900px) {
-    .details-description {
-        padding: 16px 84px 16px 84px;
-    }
-}
