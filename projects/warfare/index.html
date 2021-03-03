@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Warfare</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+	<div class="details-title">
+		<h2>Warfare (Node.js army builder game)</h2>
+	</div>
+	<div class="details-introduction">
+		<div class="details-top-image">
+			<a href="https://continuous-charm-ptarmigan.glitch.me/" target="_blank">
+				<img src="../../images/warfare_full.png" alt="Donation Tool" style="padding-bottom: 0;">
+				<p style="padding-top: 0;">Click to see!</p>
+			</a>
+		</div>
+		<div class="details-bullets">
+			<h4>Tools Used</h4>
+			<ul>
+				<li>JavaScript</li>
+				<li>Node.js</li>
+				<li>Express.js</li>
+				<li>HTML5</li>
+				<li>CSS</li>
+				<li>Glitch</li>
+			</ul>
+		</div>
+	</div>
+	<div class="details-description">
+		<p>
+			This is a simple army building- and fighting game.  The goal was to have a game that could not only run a battle between two user armies,
+			but kept track of each user's army between logins and also had a time based rebuilding mechanism.
+		</p>
+		<p>
+			On the server side, I make use of Express.js and lowdb.  Within the database, it keeps track of the armies created as JSON objects including the chosen
+			username, the number of three different types of units, the number of upgrade points available to the player, and the last login timestamp.  To assign
+			new upgrade points, at login it compares the current timestamp to the previous last login (before replacing it).
+		</p>
+		<p>
+			On the client side, the html is populated via JavaScript template strings. At login, the user's army is set to local storage so that they are logged in
+			until local storage is cleared. To recruit units or choose another army to battle I make use of promises- a fetch is performed and acted upon via a .then() command.
+		</p>
+	</div>
+
+	<div class="back">
+		<a href="../../index.html"><p>Back to Project List</p></a>
+	</div>
+</body>
+</html>
