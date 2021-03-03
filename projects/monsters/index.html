@@ -15,7 +15,8 @@
 	<div class="details-introduction">
 		<div class="details-top-image">
 			<a href="https://tazhinkle.github.io/dnd-monster-charts/" target="_blank">
-				<img src="../../images/monster_list.png" alt="A list of monsters">
+				<img src="../../images/monster_list.png" alt="A list of monsters" style="padding-bottom: 0;">
+				<p style="padding-top: 0;">Click to see!</p>
 			</a>
 		</div>
 		<div class="details-bullets">
@@ -36,7 +37,7 @@
 		</p>
 		<p>
 			Since the data is static, to be considerate to the API, I stored the data in a GitHub gist.  As a consideration to users, a second layer of caching is
-			used by storing data in local storage. I also make use of GitHub Pages for the final product.
+			used, storing data in local storage. I make use of GitHub Pages for the final product.
 		</p>
 		<p>
 			I implemented pagination and list sorting with JavaScript functions, JavaScript template strings for all of the page content rendering, and managed all application state in a simple url hash routing function.
@@ -46,13 +47,37 @@
 		</p>
 	</div>
 	<div class="details-more-images">
-		<a href="https://tazhinkle.github.io/dnd-monster-charts/" target="_blank">
-			<img src="../../images/monster_chart.png" alt="The stats of a dragon">
-		</a>
-		<a href="https://jsfiddle.net/Tazmodius/tcupy814/6/show/" target="_blank">
-			<img src="../../images/nasa.png" alt="NASA's Image of the Day">
-		</a>
+		<div class="details-box">
+			<div>
+				<a href="https://tazhinkle.github.io/dnd-monster-charts/" target="_blank">
+					<img src="../../images/monster_chart.png" alt="The stats of a dragon">
+				</a>
+			</div>
+			<div class="details-text">
+				<a href="https://tazhinkle.github.io/dnd-monster-charts/" target="_blank">
+					Click to see!
+				</a>
+			</div>
+		</div>
+
+		<div class="details-box">
+			<div>
+				<a href="https://jsfiddle.net/Tazmodius/tcupy814/6/show/" target="_blank">
+					<img src="../../images/nasa.png" alt="NASA's Image of the Day">
+				</a>
+			</div>
+			<div class="details-text">
+				<a href="https://jsfiddle.net/Tazmodius/tcupy814/6/show/" target="_blank">
+					Click to see!
+				</a>
+			</div>
+		</div>
+
+
+
 	</div>
-	<a href="../../index.html"><p>Back to Project List</p></a>
+	<div class="back">
+		<a href="../../index.html"><p>Back to Project List</p></a>
+	</div>
 </body>
 </html>
