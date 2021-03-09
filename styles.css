@@ -27,6 +27,15 @@ body {
 h1 {
     padding: 32px;
 }
+
+a {
+    color: #d4a80d;
+}
+
+a:visited {
+    color: #616665;
+}
+
 /*Main Page*/
 .project-holder {
     display: block;
