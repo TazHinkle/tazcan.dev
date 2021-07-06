@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Apps</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+	<div class="details-title">
+		<h2>Vue Apps</h2>
+	</div>
+
+	<div class="details-introduction">
+		<div class="details-top-image">
+			<img src="../../images/vue-mongo.gif" alt="Adding and deleting posts" style="padding-bottom: 0;">
+		</div>
+		<div class="details-bullets">
+			<h4>Tools Used</h4>
+			<ul>
+				<li>JavaScript</li>
+				<li>Vue.js</li>
+				<li>Mongodb</li>
+				<li>RoboMongo</li>
+				<li>HTML5</li>
+				<li>CSS3</li>
+				<li>GitHub</li>
+			</ul>
+		</div>
+	</div>
+	<div class="details-description">
+		<h4>MongoDB/Vue App</h4>
+		<p>
+			The client side is a Vue template.  It consists of an input, a button, and a series of divs which are generated at run time
+			when the response from get request is sent from the database. The divs populate as green if no errors were encountered, and red otherwise.
+		</p>
+		<p>
+			The server side is Node.js working with HTTP client axios.js, connecting to a Mongo database.  I ran a local instance of MongoDB
+			in a Docker container and used the RoboMongo GUI to create the database and the collection.
+		</p>
+		<br>
+		<h4>Vue Stat Calculator App</h4>
+		<p>
+			In this app, I consume the fanzey pokemon API to reproduce some of the pokemon stats in a list.  This list is sortable by each
+			of the characteristics chosen. One characteristic, "Stat Sum," is calculated in a Vue computed.  The template populates a table
+			at runtime with the response from the API call.
+		</p>
+	</div>
+	<div class="details-more-images">
+		<div class="details-box">
+			<div>
+				<a href="https://tazhinkle.github.io/vue_pokemon_calculator/" target="_blank">
+					<img src="../../images/pokestats.png" alt="Pokemon Stat chart">
+				</a>
+			</div>
+			<div class="details-text">
+				<a href="https://tazhinkle.github.io/vue_pokemon_calculator/" target="_blank">
+					Click to see!
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="back">
+		<a href="../../index.html"><p>Back to Project List</p></a>
+	</div>
+</body>
+</html>

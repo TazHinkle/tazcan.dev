@@ -8,3 +8,6 @@ Have organized link outs to github etc.
 
 Thumbnail pictures: 150 x 162px
 Main page pictures: 310 x 323px
+
+Image editing: pixlr.com
+Video editing: ScreenToGif
