@@ -3,7 +3,6 @@
   <button @click="journey">Start Journey</button>
   <button @click="skipToEnd">Skip to the End</button>
   <p>Inventory</p>
-  <p>The Story</p>
 </template>
 
 <script setup>
