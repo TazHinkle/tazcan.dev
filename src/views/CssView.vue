@@ -3,12 +3,23 @@
 // if not html badge, add it.
 import useInventory from '../composables/useInventory.js';
 const { addItemToInventory } = useInventory();
-addItemToInventory('css');
+addItemToInventory('/css');
 
 </script>
 
 <template>
-  <p>I don't remember a time when I didn't love computers, but it wasn't until I was a teenager and made my first website that I got a taste for creating my own content. I put some basic html up on a Geocities website- and got "fancy" and made it have white text against a black background. I discovered exciting things like FTP utilities and tables (so many tables...). It was just a great experience and a skill that I was able to use for my own ends and sometimes to help out a friend.</p>
+  <div class="imageHolder">
+    <img src="../assets/logos/css_logo.png" alt="css logo" height="150"/>
+  </div>
+  <p>My first big step into styling was in adopting the Bootstrap framework. I used this on multiple personal projects, and also while working at Infosys. It's a great time-saver from going from your first line of code to having a solid looking GUI with minimal hassle.</p>
+  <p>Vuetify is flashy, with it's prefab components ready to be slotted into a Vue.js project. It also has some very good documentation. I got very, very familiar with the Vuetify docs while working at CityGro.</p>
+  <p>In some ways, learning modern CSS with flexbox, media queries, and percentage based sizing, is the most powerful tool, as it can be used both on its own, and to modify the styling of the other frameworks as needed.</p>
 
-  <p>Later, and I'm skipping some steps, I learned about the different version of html and how much more powerful HTML5 was than previous versions. It has audio and video tags, along with the super cool canvas. Then there were the really fancy thing like the expanded local storage, offline caching, and cross-document messaging features.</p>
 </template>
+<style scoped>
+.imageHolder {
+  display: flex;
+  justify-content: center;
+}
+
+</style>
