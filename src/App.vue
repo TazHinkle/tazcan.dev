@@ -86,6 +86,27 @@ onUnmounted(()=>{
       <nav class="buttonBar" v-if="screenWidth < 601">
         <RouterLink v-for="route in routeLinkComputed" :to="{name: route.name}"  @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink>
       </nav>
+      <div class="noooooo">
+        <svg
+            width="120"
+            height="120"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="40" y="10" width="30" height="30" stroke="black" fill="black"/>
+          <rect x="5" y="45" width="30" height="30" stroke="black" fill="black"/>
+          <rect x="40" y="45" width="30" height="30" stroke="black" fill="black"/>
+          <rect x="75"
+                y="45"
+                width="30"
+                height="30"
+                stroke="black"
+                fill="black"
+                @click="journey"
+                :disabled="journeyDisabled"
+          />
+          <rect x="40" y="80" width="30" height="30" stroke="black" fill="black"/>
+        </svg>
+      </div>
       <div class="inventory">
         <InventoryView
           :inventory="inventory"
@@ -102,5 +123,9 @@ ul {
 .inventory {
   border: 2px solid #eee;
   margin: 0 2%;
+}
+.noooooo {
+  display: flex;
+  justify-content: center;
 }
 </style>
