@@ -3,6 +3,7 @@ import useInventory from "./composables/useInventory.js";
 import {computed, onMounted, onUnmounted, ref} from 'vue';
 import {useRouter, useRoute} from 'vue-router';
 import Home from "./views/Home.vue";
+import InventoryView from "./views/InventoryView.vue";
 
 const router = useRouter();
 const {path} = useRoute();
@@ -60,15 +61,17 @@ onUnmounted(()=>{
       <RouterView></RouterView>
     </div>
     <div class="top"></div>
-    <div class="left">
-      <div v-if="screenWidth > 600" class="navLeft">
+    <div class="left"
+         v-if="screenWidth > 600"
+    >
+      <div class="navLeft">
         <ul>
           <li v-for="route in routeLinkComputed">
             <RouterLink :to="{name: route.name}" @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink></li>
         </ul>
       </div>
     </div>
-    <div class="right"></div>
+    <div class="right" v-if="screenWidth > 600"></div>
     <div class="bottom"></div>
     <div class="consoleBody"></div>
     <div class="belowScreen">
@@ -81,12 +84,23 @@ onUnmounted(()=>{
         <button v-if="screenWidth < 601">Mobile Button!</button>
       </div>
       <nav class="buttonBar" v-if="screenWidth < 601">
-        <RouterLink v-for="route in routeLinkComputed" :to="{name: route.name}">{{labelMap[route.path]}}</RouterLink>
+        <RouterLink v-for="route in routeLinkComputed" :to="{name: route.name}"  @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink>
       </nav>
       <div class="inventory">
-        <pre>{{inventory}}</pre>
+        <InventoryView
+          :inventory="inventory"
+        />
       </div>
     </div>
   </div>
 </template>
 
+<style scoped>
+ul {
+  list-style: none;
+}
+.inventory {
+  border: 2px solid #eee;
+  margin: 0 2%;
+}
+</style>

@@ -5,29 +5,37 @@ body {
   font-family: sans-serif;
   font-size: 16px;
   line-height: 1.5rem;
+  margin: 0;
+}
+#app {
+  width: 100%;
 }
 a, a:visited {
   color: whitesmoke;
 }
 .belowScreen {
+  background-color: #666;
   position: fixed;
   top: 60%;
   left: 0;
   right: 0;
-  background-color: #888888;
-  width: 100%;
   height: 40%;
   z-index: 1;
+  border: 8px solid #333333;
 }
 .screenContent {
   z-index: 0;
   padding-bottom: 50vh;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgb(68, 57, 248) 0%, rgb(76, 125, 250) 0%, rgba(110,215,255,1) 47%);
+  border: 8px solid #333333;
+  width: 102%;
 }
 .buttonBar {
   display: flex;
   justify-content: space-evenly;
 }
-@media (min-width: 600px) {
+@media (min-width: 750px) {
   body {
     padding-left: calc(50% - 300px);
     padding-right: calc(50% - 300px);
@@ -80,7 +88,6 @@ a, a:visited {
   }
   .screenContent {
     padding: calc(50vh - 300px) 16px;
-
   }
   .consoleBody {
     position: fixed;
@@ -93,7 +100,6 @@ a, a:visited {
     z-index: 1;
   }
   .belowScreen {
-    background-color: #666;
     position: fixed;
     box-sizing: border-box;
     top: 50%;
