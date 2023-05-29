@@ -17,4 +17,9 @@ defineProps(['inventory'])
 .backpack {
   min-height: 60px;
 }
+.navLevelItems {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
 </style>

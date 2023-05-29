@@ -16,6 +16,7 @@ a, a:visited {
 .imageHolder {
   display: flex;
   justify-content: center;
+  padding-top: 2%;
 }
 .belowScreen {
   background-color: #666;

@@ -9,7 +9,8 @@ const router = createRouter({
         {path: '/html', name: 'HtmlView', component: HtmlView},
         {path: '/css', name: 'CssView', component: () => import('../views/CssView.vue')},
         {path: '/js', name: 'JavaScriptView', component: () => import('../views/JavaScriptView.vue')},
-        // everything else
+        {path: '/git', name: 'GitView', component: () => import('../views/GitView.vue')},
+        {path: '/vue', name: 'VueView', component: () => import('../views/VueView.vue')},
         {path: '/resume', name: 'ResumeView', component: () => import('../views/ResumeView.vue')}
     ]
 })

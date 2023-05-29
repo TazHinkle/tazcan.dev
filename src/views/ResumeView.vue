@@ -81,7 +81,7 @@ const skillList = [
   </div>
 </template>
 
-<style>
+<style scoped>
 h4 {
   color: #6a0055;
 }

@@ -11,7 +11,10 @@ const {inventory} = useInventory()
 const labelMap = {
   '/': 'Home',
   '/html': 'HTML',
-  '/css': 'CSS'
+  '/css': 'CSS',
+  '/js': 'JavaScript',
+  '/git': 'Git',
+  '/vue': 'Vue',
 }
 
 const routes = router.getRoutes();
