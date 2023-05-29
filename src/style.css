@@ -13,6 +13,10 @@ body {
 a, a:visited {
   color: whitesmoke;
 }
+.imageHolder {
+  display: flex;
+  justify-content: center;
+}
 .belowScreen {
   background-color: #666;
   position: fixed;
@@ -21,7 +25,9 @@ a, a:visited {
   right: 0;
   height: 40%;
   z-index: 1;
-  border: 8px solid #333333;
+  border-top: 8px solid #333333;
+  border-left: 8px solid #333333;
+  border-right: 8px solid #333333;
 }
 .screenContent {
   z-index: 0;
@@ -29,7 +35,9 @@ a, a:visited {
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgb(68, 57, 248) 0%, rgb(76, 125, 250) 0%, rgba(110,215,255,1) 47%);
   border: 8px solid #333333;
-  width: 102%;
+  width: 100%;
+  max-width: 100%;
+  line-break: auto;
 }
 .buttonBar {
   display: flex;

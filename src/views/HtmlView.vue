@@ -1,6 +1,4 @@
 <script setup>
-// pull in state.progress
-// if not html badge, add it.
 import useInventory from '../composables/useInventory.js';
 const { addItemToInventory } = useInventory();
 addItemToInventory('/html');
@@ -15,10 +13,3 @@ addItemToInventory('/html');
 
   <p>Later, and I'm skipping some steps, I learned about the different version of html and how much more powerful HTML5 was than previous versions. It has audio and video tags, along with the super cool canvas. Then there were the really fancy thing like the expanded local storage, offline caching, and cross-document messaging features.</p>
 </template>
-<style scoped>
-.imageHolder {
-  display: flex;
-  justify-content: center;
-}
-
-</style>

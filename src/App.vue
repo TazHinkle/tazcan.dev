@@ -1,12 +1,12 @@
 <script setup>
 import useInventory from "./composables/useInventory.js";
 import {computed, onMounted, onUnmounted, ref} from 'vue';
-import {useRouter, useRoute} from 'vue-router';
+import {useRouter, useRoute, useLink} from 'vue-router';
 import Home from "./views/Home.vue";
 import InventoryView from "./views/InventoryView.vue";
 
 const router = useRouter();
-const {path} = useRoute();
+window.route = useRoute();
 const {inventory} = useInventory()
 const labelMap = {
   '/': 'Home',
@@ -15,7 +15,7 @@ const labelMap = {
 }
 
 const routes = router.getRoutes();
-const currentRoute = ref(routes.find((element)=> element.path === path));
+const currentRoute = ref(routes.find((element)=> element.path === window.route.fullPath));
 const routeLinkComputed = computed(()=> {
   return [
     {path: '/', name: 'Home', component: Home},
@@ -23,15 +23,24 @@ const routeLinkComputed = computed(()=> {
         .filter((route) => Object.keys(inventory).includes(route.path))
   ]
 })
-const journey = () => {
+const journey = (direction) => {
     let index = routes.findIndex((element) => element.path === currentRoute.value.path)
+  if(direction === 'forward' && currentRoute.value.path !== '/resume') {
     currentRoute.value = routes[++index]
     router.push(currentRoute.value);
     window.scrollTo(0, 0);
-
+  } else if (direction === 'back' && currentRoute.value.path !== '/') {
+    currentRoute.value = routes[--index]
+    router.push(currentRoute.value);
+    window.scrollTo(0, 0);
+  }
+    return
 }
-const journeyDisabled = computed(()=> {
+const journeyForwardDisabled = computed(()=> {
   return currentRoute.value.path === '/resume';
+})
+const journeyBackDisabled = computed(()=> {
+  return currentRoute.value.path === '/';
 })
 const navigateByLink = (route) => {
   currentRoute.value = route;
@@ -76,35 +85,44 @@ onUnmounted(()=>{
     <div class="consoleBody"></div>
     <div class="belowScreen">
       <div class="buttonBar">
-        <button
-            @click="journey"
-            :disabled="journeyDisabled"
-        >{{ (currentRoute.path === routes[0].path) ? 'Start' : 'Continue' }}</button>
+<!--        <button-->
+<!--            @click="journey('forward')"-->
+<!--            :disabled="journeyForwardDisabled"-->
+<!--        >{{ (currentRoute.path === routes[0].path) ? 'Start' : 'Continue' }}</button>-->
         <button @click="skipToEnd">Skip to the End</button>
-        <button v-if="screenWidth < 601">Mobile Button!</button>
+<!--        <button v-if="screenWidth < 601">Mobile Button!</button>-->
       </div>
-      <nav class="buttonBar" v-if="screenWidth < 601">
-        <RouterLink v-for="route in routeLinkComputed" :to="{name: route.name}"  @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink>
-      </nav>
+<!--      <nav class="buttonBar" v-if="screenWidth < 601">-->
+<!--        <RouterLink v-for="route in routeLinkComputed" :to="{name: route.name}"  @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink>-->
+<!--      </nav>-->
       <div class="noooooo">
         <svg
             width="120"
             height="120"
             xmlns="http://www.w3.org/2000/svg"
         >
-          <rect x="40" y="10" width="30" height="30" stroke="black" fill="black"/>
-          <rect x="5" y="45" width="30" height="30" stroke="black" fill="black"/>
+          <rect x="40" y="14" width="30" height="30" stroke="black" fill="black"/>
+          <rect
+              x="9"
+              y="45"
+              width="30"
+              height="30"
+              stroke="black"
+              fill="black"
+              @click="journey('back')"
+              :disabled="journeyBackDisabled"
+          />
           <rect x="40" y="45" width="30" height="30" stroke="black" fill="black"/>
-          <rect x="75"
+          <rect x="71"
                 y="45"
                 width="30"
                 height="30"
                 stroke="black"
                 fill="black"
-                @click="journey"
-                :disabled="journeyDisabled"
+                @click="journey('forward')"
+                :disabled="journeyForwardDisabled"
           />
-          <rect x="40" y="80" width="30" height="30" stroke="black" fill="black"/>
+          <rect x="40" y="76" width="30" height="30" stroke="black" fill="black"/>
         </svg>
       </div>
       <div class="inventory">
