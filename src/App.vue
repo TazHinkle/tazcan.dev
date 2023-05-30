@@ -89,17 +89,9 @@ onUnmounted(()=>{
     <div class="consoleBody"></div>
     <div class="belowScreen">
       <div class="buttonBar">
-<!--        <button-->
-<!--            @click="journey('forward')"-->
-<!--            :disabled="journeyForwardDisabled"-->
-<!--        >{{ (currentRoute.path === routes[0].path) ? 'Start' : 'Continue' }}</button>-->
         <button @click="skipToEnd">Skip to the End</button>
-<!--        <button v-if="screenWidth < 601">Mobile Button!</button>-->
       </div>
-<!--      <nav class="buttonBar" v-if="screenWidth < 601">-->
-<!--        <RouterLink v-for="route in routeLinkComputed" :to="{name: route.name}"  @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink>-->
-<!--      </nav>-->
-      <div class="noooooo">
+      <div class="directionPad">
         <svg
             width="120"
             height="120"
@@ -146,7 +138,7 @@ ul {
   border: 2px solid #eee;
   margin: 0 2%;
 }
-.noooooo {
+.directionPad {
   display: flex;
   justify-content: center;
 }
