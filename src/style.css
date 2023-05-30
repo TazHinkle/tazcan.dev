@@ -32,7 +32,7 @@ a, a:visited {
 }
 .screenContent {
   z-index: 0;
-  padding-bottom: 50vh;
+  padding: 0 16px calc(40vh + 16px) 16px;
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgb(68, 57, 248) 0%, rgb(76, 125, 250) 0%, rgba(110,215,255,1) 47%);
   border: 8px solid #333333;
@@ -49,7 +49,6 @@ a, a:visited {
     padding-left: calc(50% - 300px);
     padding-right: calc(50% - 300px);
     padding-top: calc(50vh - 520px);
-    padding-bottom: calc(50vh - 160px);
   }
   .top {
     display: block;
@@ -96,7 +95,7 @@ a, a:visited {
     z-index: 0;
   }
   .screenContent {
-    padding: calc(50vh - 300px) 16px;
+    padding: calc(50vh - 320px + 16px) 16px calc(50vh + 16px) 16px;
   }
   .consoleBody {
     position: fixed;

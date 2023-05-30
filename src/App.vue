@@ -1,13 +1,16 @@
 <script setup>
 import useInventory from "./composables/useInventory.js";
 import {computed, onMounted, onUnmounted, ref} from 'vue';
-import {useRouter, useRoute, useLink} from 'vue-router';
+import {useRouter, useRoute} from 'vue-router';
 import Home from "./views/Home.vue";
 import InventoryView from "./views/InventoryView.vue";
 
 const router = useRouter();
-window.route = useRoute();
+const routes = router.getRoutes();
+const route = useRoute();
+console.log('route', route.fullPath);
 const {inventory} = useInventory()
+
 const labelMap = {
   '/': 'Home',
   '/html': 'HTML',
@@ -17,8 +20,7 @@ const labelMap = {
   '/vue': 'Vue',
 }
 
-const routes = router.getRoutes();
-const currentRoute = ref(routes.find((element)=> element.path === window.route.fullPath));
+const currentRoute = ref(routes.find((element)=> element.path === route.fullPath));
 const routeLinkComputed = computed(()=> {
   return [
     {path: '/', name: 'Home', component: Home},
@@ -28,17 +30,16 @@ const routeLinkComputed = computed(()=> {
 })
 const journey = (direction) => {
     let index = routes.findIndex((element) => element.path === currentRoute.value.path)
-  if(direction === 'forward' && currentRoute.value.path !== '/resume') {
-    currentRoute.value = routes[++index]
-    router.push(currentRoute.value);
-    window.scrollTo(0, 0);
-  } else if (direction === 'back' && currentRoute.value.path !== '/') {
-    currentRoute.value = routes[--index]
+  if(
+      (direction === 'forward' && currentRoute.value.path !== '/resume') ||
+      (direction === 'back' && currentRoute.value.path !== '/')
+  ) {
+    (direction === 'forward') ? currentRoute.value = routes[++index] : currentRoute.value = routes[--index];
     router.push(currentRoute.value);
     window.scrollTo(0, 0);
   }
-    return
 }
+
 const journeyForwardDisabled = computed(()=> {
   return currentRoute.value.path === '/resume';
 })
