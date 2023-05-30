@@ -12,6 +12,10 @@ const router = createRouter({
         {path: '/git', name: 'GitView', component: () => import('../views/GitView.vue')},
         {path: '/vue', name: 'VueView', component: () => import('../views/VueView.vue')},
         {path: '/resume', name: 'ResumeView', component: () => import('../views/ResumeView.vue')}
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        // always scroll to top
+        return { top: 0 }
+    },
 })
 export default router

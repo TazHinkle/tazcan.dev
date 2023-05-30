@@ -4,6 +4,7 @@ import {computed, onMounted, onUnmounted, ref} from 'vue';
 import {useRouter, useRoute} from 'vue-router';
 import Home from "./views/Home.vue";
 import InventoryView from "./views/InventoryView.vue";
+import { onKeyDown } from "@vueuse/core";
 
 const router = useRouter();
 const routes = router.getRoutes();
@@ -18,43 +19,32 @@ const labelMap = {
   '/js': 'JavaScript',
   '/git': 'Git',
   '/vue': 'Vue',
+  '/resume': 'Resume',
 }
 
-const currentRoute = ref(routes.find((element)=> element.path === route.fullPath));
-const routeLinkComputed = computed(()=> {
-  return [
-    {path: '/', name: 'Home', component: Home},
-    ...routes
-        .filter((route) => Object.keys(inventory).includes(route.path))
-  ]
-})
 const journey = (direction) => {
-    let index = routes.findIndex((element) => element.path === currentRoute.value.path)
+    const index = routes.findIndex((element) => element.path === route.path)
   if(
-      (direction === 'forward' && currentRoute.value.path !== '/resume') ||
-      (direction === 'back' && currentRoute.value.path !== '/')
+      (direction === 'forward' && route.path !== '/resume') ||
+      (direction === 'back' && route.path !== '/')
   ) {
-    (direction === 'forward') ? currentRoute.value = routes[++index] : currentRoute.value = routes[--index];
-    router.push(currentRoute.value);
-    window.scrollTo(0, 0);
+    const nextRoute = (direction === 'forward') ? routes[index + 1] : routes[index - 1]
+    router.push(nextRoute);
   }
 }
-
+onKeyDown('ArrowRight', ()=> {
+  journey('forward');
+})
+onKeyDown('ArrowLeft', ()=> {
+  journey('back');
+})
 const journeyForwardDisabled = computed(()=> {
-  return currentRoute.value.path === '/resume';
+  return route.path === '/resume';
 })
 const journeyBackDisabled = computed(()=> {
-  return currentRoute.value.path === '/';
+  return route.path === '/';
 })
-const navigateByLink = (route) => {
-  currentRoute.value = route;
-  window.scrollTo(0, 0);
-}
-const skipToEnd = () => {
-  currentRoute.value = routes[routes.length - 1];
-  router.push(currentRoute.value);
-  window.scrollTo(0, 0);
-}
+
 const screenWidth = ref(window.innerWidth)
 
 const handleResize = () => {
@@ -74,22 +64,26 @@ onUnmounted(()=>{
       <RouterView></RouterView>
     </div>
     <div class="top"></div>
+    <div class="borderTop"></div>
     <div class="left"
          v-if="screenWidth > 600"
     >
       <div class="navLeft">
         <ul>
-          <li v-for="route in routeLinkComputed">
-            <RouterLink :to="{name: route.name}" @click="navigateByLink(route)">{{labelMap[route.path]}}</RouterLink></li>
+          <li v-for="item in routes">
+            <RouterLink
+              :to="{name: item.name}"
+              :class="{active: item.name === route.name}"
+            >{{labelMap[item.path]}}</RouterLink>
+          </li>
         </ul>
       </div>
     </div>
     <div class="right" v-if="screenWidth > 600"></div>
     <div class="bottom"></div>
-    <div class="consoleBody"></div>
     <div class="belowScreen">
       <div class="buttonBar">
-        <button @click="skipToEnd">Skip to the End</button>
+        <RouterLink :to="{name: 'ResumeView'}" class="resumeButton">Skip to Resume</RouterLink>
       </div>
       <div class="directionPad">
         <svg
@@ -121,11 +115,9 @@ onUnmounted(()=>{
           <rect x="40" y="76" width="30" height="30" stroke="black" fill="black"/>
         </svg>
       </div>
-      <div class="inventory">
-        <InventoryView
+      <InventoryView
           :inventory="inventory"
-        />
-      </div>
+      />
     </div>
   </div>
 </template>
@@ -134,12 +126,20 @@ onUnmounted(()=>{
 ul {
   list-style: none;
 }
-.inventory {
-  border: 2px solid #eee;
-  margin: 0 2%;
-}
 .directionPad {
   display: flex;
   justify-content: center;
+}
+.router-link-active {
+  color: #b20260;
+}
+.resumeButton {
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px;
+  color: #ddd;
+  border-radius: 8px;
+  background-color: #000;
+  box-shadow: 0 0 3px #dddddd;
 }
 </style>

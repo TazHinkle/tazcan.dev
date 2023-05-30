@@ -30,12 +30,33 @@ a, a:visited {
   border-left: 8px solid #333333;
   border-right: 8px solid #333333;
 }
+.borderTop {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  background-color: #333;
+  height: 8px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+.bottom {
+  width: 100%;
+  position: fixed;
+  height: 8px;
+  bottom: 0;
+  background-color: #333;
+  z-index: 2;
+}
 .screenContent {
   z-index: 0;
-  padding: 0 16px calc(40vh + 16px) 16px;
+  padding: 32px 16px calc(40vh + 16px) 16px;
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgb(68, 57, 248) 0%, rgb(76, 125, 250) 0%, rgba(110,215,255,1) 47%);
-  border: 8px solid #333333;
+  border-right: 8px solid #333333;
+  border-left: 8px solid #333333;
+  border-bottom: 8px solid #333333;
   width: 100%;
   max-width: 100%;
   line-break: auto;
@@ -61,6 +82,18 @@ a, a:visited {
     height: calc(50% - 320px + 16px);
     z-index: 0;
   }
+  .borderTop {
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+    background-color: #333;
+    height: 16px;
+    width: auto;
+    top: calc(50% - 320px);
+    left: calc(50% - 300px);
+    right: calc(50% - 300px);
+    position: fixed;
+    z-index: 1;
+  }
   .bottom {
     display: block;
     content: '';
@@ -69,7 +102,7 @@ a, a:visited {
     left: 0;
     right: 0;
     bottom: 0;
-    height: calc(50% - 320px + 16px);
+    height: calc(50% - 320px + 34px);
     z-index: 0;
   }
   .left {
@@ -78,10 +111,11 @@ a, a:visited {
     background-color: #405;
     position: fixed;
     left: 0;
-    top: 0;
-    bottom: 0;
+    top: calc(50% - 320px + 16px);
+    height: 590px;
     width: calc(50% - 300px + 16px);
     z-index: 0;
+    border-right: 16px solid #333;
   }
   .right {
     display: block;
@@ -89,24 +123,16 @@ a, a:visited {
     background-color: #405;
     position: fixed;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: calc(50% - 320px + 16px);
+    height: 590px;
     width: calc(50% - 300px + 16px);
     z-index: 0;
+    border-left: 16px solid #333;
   }
   .screenContent {
     padding: calc(50vh - 320px + 16px) 16px calc(50vh + 16px) 16px;
   }
-  .consoleBody {
-    position: fixed;
-    top: calc(50vh - 320px);
-    left: calc(50% - 300px);
-    width: 600px;
-    height: 640px;
-    border-radius: 32px;
-    border: 16px solid #333;
-    z-index: 1;
-  }
+
   .belowScreen {
     position: fixed;
     box-sizing: border-box;
@@ -121,7 +147,7 @@ a, a:visited {
     z-index: 2;
   }
   .navLeft {
-    margin-top: calc(50vh - 320px);
+    margin-top: calc(50vh - 500px);
     color: whitesmoke;
     z-index: 5;
   }
