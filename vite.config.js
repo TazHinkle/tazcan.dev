@@ -6,5 +6,6 @@ export default defineConfig({
   server: {
     host: true,
   },
-  plugins: [vue()],
+  base: '/tazcan_dev/',
+  plugins: [vue()]
 })
