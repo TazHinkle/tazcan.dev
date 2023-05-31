@@ -75,9 +75,10 @@ const skillList = [
       <p>CIW Site Development Associate 2019</p>
       <p>CompTIA Project+ 2019</p>
     </div>
-<!--    <div class="three">-->
-<!--      <h4>Additional Experience</h4>-->
-<!--    </div>-->
+  </div>
+  <div class="imageHolder">
+    <a href="https://github.com/TazHinkle"><img src="../assets/logos/github-mark-32px.png" alt="GitHub"></a>
+    <a href="https://www.linkedin.com/in/taz-hinkle-9870321a/"><img src="../assets/logos/li-in-bug.png" alt="LinkedIn"></a>
   </div>
 </template>
 
@@ -87,6 +88,11 @@ h4 {
 }
 p {
   margin: 0;
+}
+.imageHolder a {
+  display: inline-block;
+  padding: 8px;
+  margin: 8px;
 }
 @media (min-width: 750px) {
   .wrapper {
@@ -98,12 +104,6 @@ p {
   }
   .two {
     margin-left: 5%;
-    width: 25%;
-  }
-  .three {
-    width: 60%;
-  }
-  .four {
     width: 25%;
   }
 }
