@@ -6,6 +6,6 @@ export default defineConfig({
   server: {
     host: true,
   },
-  base: process.env.NODE_ENV === 'production' ? '/tazcan_dev/' : '/',
+  // base: process.env.NODE_ENV === 'production' ? '/tazcan_dev/' : '/',
   plugins: [vue()]
 })
