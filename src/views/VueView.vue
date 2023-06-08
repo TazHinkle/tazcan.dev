@@ -4,9 +4,12 @@ const { addItemToInventory } = useInventory();
 addItemToInventory('/vue');
 </script>
 <template>
-  <div class="imageHolder">
-    <img src="../assets/logos/vue_logo.png" alt="Vue logo" height="150" />
+  <div class="vueView">
+    <div class="imageHolder">
+      <img src="../assets/logos/vue_logo.png" alt="Vue logo" height="150" />
+    </div>
+    <p>I started using Vue in personal projects, mostly using the CDN method. It made for a great way to start learning the options API before getting built Vue. While working for CityGro, I worked with a full webpack Vue2 project, including Vue Router 3, VueX, and VueX ORM.</p>
+    <p>The component based programming model provided by Vue is ideal for Single Page Applications. It's lightweight compared to other frameworks, but just as powerful. I am currently working towards a Vue 3 certification through vuejs.org. Vue 3, specifically the Composition API, seems to be even more sleek and powerful than Vue 2 and I'm very excited to use it in more projects.</p>
   </div>
-  <p>I started using Vue in personal projects, mostly using the CDN method. It made for a great way to start learning the options API before getting built Vue. While working for CityGro, I worked with a full webpack Vue2 project, including Vue Router 3, VueX, and VueX ORM.</p>
-  <p>The component based programming model provided by Vue is ideal for Single Page Applications. It's lightweight compared to other frameworks, but just as powerful. I am currently working towards a Vue 3 certification through vuejs.org. Vue 3, specifically the Composition API, seems to be even more sleek and powerful than Vue 2 and I'm very excited to use it in more projects.</p>
+
 </template>

@@ -61,7 +61,11 @@ onUnmounted(()=>{
 <template>
   <div>
     <div class="screenContent">
-      <RouterView></RouterView>
+      <RouterView v-slot="{ Component }">
+        <Transition>
+          <component :is="Component" />
+        </Transition>
+      </RouterView>
     </div>
     <div class="top"></div>
     <div class="borderTop"></div>
@@ -141,5 +145,14 @@ ul {
   border-radius: 8px;
   background-color: #000;
   box-shadow: 0 0 3px #dddddd;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
