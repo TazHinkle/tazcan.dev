@@ -59,7 +59,7 @@ onUnmounted(()=>{
 </script>
 
 <template>
-  <div>
+  <div class="app">
     <div class="screenContent">
       <div class="contentHolder">
         <RouterView v-slot="{ Component }">
