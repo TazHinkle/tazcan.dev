@@ -77,8 +77,8 @@ const skillList = [
       </div>
     </div>
     <div class="imageHolder">
-      <a href="https://github.com/TazHinkle"><img src="../assets/logos/github-mark-32px.png" alt="GitHub"></a>
-      <a href="https://www.linkedin.com/in/taz-hinkle-9870321a/"><img src="../assets/logos/li-in-bug.png" alt="LinkedIn"></a>
+      <a href="https://github.com/TazHinkle" target="_blank"><img src="../assets/logos/github-mark-32px.png" alt="GitHub"></a>
+      <a href="https://www.linkedin.com/in/taz-hinkle-9870321a/" target="_blank"><img src="../assets/logos/li-in-bug.png" alt="LinkedIn"></a>
     </div>
   </div>
 </template>
