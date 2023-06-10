@@ -1,17 +1,18 @@
 <script setup>
 import useInventory from "./composables/useInventory.js";
-import {computed, onMounted, onUnmounted, ref} from 'vue';
+import {computed, onMounted, onUnmounted, ref, watch} from 'vue';
 import {useRouter, useRoute} from 'vue-router';
 import Home from "./views/Home.vue";
 import InventoryView from "./views/InventoryView.vue";
-import { onKeyDown } from "@vueuse/core";
+import { onKeyDown, useSwipe } from "@vueuse/core";
 
 const router = useRouter();
 const routes = router.getRoutes();
 const route = useRoute();
-console.log('route', route.fullPath);
-const {inventory} = useInventory()
 
+const {inventory} = useInventory();
+const screenContentElement = ref(null);
+const { isSwiping, direction } = useSwipe(screenContentElement);
 const labelMap = {
   '/': 'Home',
   '/html': 'HTML',
@@ -21,7 +22,15 @@ const labelMap = {
   '/vue': 'Vue',
   '/resume': 'Resume',
 }
-
+watch(isSwiping, ()=> {
+  const swipeMap = {
+    'right': 'back',
+    'left': 'forward'
+  }
+  if(direction.value === 'right' || direction.value === 'left') {
+    journey(swipeMap[direction.value]);
+  }
+})
 const journey = (direction) => {
     const index = routes.findIndex((element) => element.path === route.path)
   if(
@@ -60,10 +69,13 @@ onUnmounted(()=>{
 
 <template>
   <div class="app">
-    <div class="screenContent">
+    <div
+        class="screenContent"
+        ref="screenContentElement"
+    >
       <div class="contentHolder">
         <RouterView v-slot="{ Component }">
-          <Transition>
+          <Transition mode="out-in">
             <component :is="Component" />
           </Transition>
         </RouterView>
