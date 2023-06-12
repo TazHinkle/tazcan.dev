@@ -12,7 +12,18 @@ const route = useRoute();
 
 const {inventory} = useInventory();
 const screenContentElement = ref(null);
-const { isSwiping, direction } = useSwipe(screenContentElement);
+useSwipe(screenContentElement, {
+  onSwipeEnd: (e, direction)=> {
+    const swipeMap = {
+      'right': 'back',
+      'left': 'forward'
+    }
+    const journeyDirection = swipeMap[direction];
+    if(journeyDirection) {
+      journey(journeyDirection);
+    }
+  }
+});
 const labelMap = {
   '/': 'Home',
   '/html': 'HTML',
@@ -22,15 +33,6 @@ const labelMap = {
   '/vue': 'Vue',
   '/resume': 'Resume',
 }
-watch(isSwiping, ()=> {
-  const swipeMap = {
-    'right': 'back',
-    'left': 'forward'
-  }
-  if(direction.value === 'right' || direction.value === 'left') {
-    journey(swipeMap[direction.value]);
-  }
-})
 const journey = (direction) => {
     const index = routes.findIndex((element) => element.path === route.path)
   if(
