@@ -1,0 +1,1 @@
+.imageHolder[data-v-d3ef203a]{display:flex;justify-content:center}.imageHolder img[data-v-d3ef203a]{animation-duration:.7s;animation-name:flip-with-scale-d3ef203a;animation-iteration-count:1}@keyframes flip-with-scale-d3ef203a{0%{transform:scaleX(1)}50%{transform:scaleX(-1)}to{transform:scaleX(1)}}
