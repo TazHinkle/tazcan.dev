@@ -99,7 +99,7 @@ onUnmounted(()=>{
         </ul>
       </div>
     </div>
-    <div class="right" v-if="screenWidth > 600"></div>
+    <div class="right" v-if="screenWidth >= 750"></div>
     <div class="bottom"></div>
     <div class="belowScreen">
       <div class="buttonBar">
@@ -111,7 +111,9 @@ onUnmounted(()=>{
             height="120"
             xmlns="http://www.w3.org/2000/svg"
         >
-          <rect x="40" y="14" width="30" height="30" stroke="black" fill="black"/>
+          <RouterLink :to="{name: 'Home'}">
+            <rect x="40" y="14" width="30" height="30" stroke="black" fill="black"/>
+          </RouterLink>
           <rect
               x="9"
               y="45"
@@ -132,7 +134,9 @@ onUnmounted(()=>{
                 @click="journey('forward')"
                 :disabled="journeyForwardDisabled"
           />
-          <rect x="40" y="76" width="30" height="30" stroke="black" fill="black"/>
+          <RouterLink :to="{name: 'ResumeView'}">
+            <rect x="40" y="76" width="30" height="30" stroke="black" fill="black"/>
+          </RouterLink>
         </svg>
       </div>
       <InventoryView
