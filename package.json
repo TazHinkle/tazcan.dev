@@ -1,7 +1,7 @@
 {
   "name": "journey",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
-    "gh-pages": "^5.0.0",
+    "gh-pages": "^3.0.0",
     "vite": "^4.2.3"
   }
 }

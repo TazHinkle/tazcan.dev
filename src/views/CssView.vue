@@ -23,5 +23,22 @@ addItemToInventory('/css');
   display: flex;
   justify-content: center;
 }
+.imageHolder img {
+  animation-duration: 0.7s;
+  animation-name: flip-with-scale;
+  animation-iteration-count: 1;
+}
+
+@keyframes flip-with-scale {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
 
 </style>
