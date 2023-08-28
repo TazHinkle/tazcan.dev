@@ -24,20 +24,18 @@ addItemToInventory('/css');
   justify-content: center;
 }
 .imageHolder img {
-  animation-duration: 0.7s;
+  animation-duration: 2.5s;
   animation-name: flip-with-scale;
   animation-iteration-count: 1;
+  animation-timing-function: ease-out;
 }
 
 @keyframes flip-with-scale {
   0% {
-    transform: scaleX(1);
-  }
-  50% {
-    transform: scaleX(-1);
+    transform: rotateY(0deg);
   }
   100% {
-    transform: scaleX(1);
+    transform: rotateY(720deg);
   }
 }
 
