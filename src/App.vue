@@ -1,6 +1,6 @@
 <script setup>
 import useInventory from "./composables/useInventory.js";
-import {computed, onMounted, onUnmounted, ref, watch} from 'vue';
+import {computed, onMounted, onUnmounted, ref} from 'vue';
 import {useRouter, useRoute} from 'vue-router';
 import Home from "./views/Home.vue";
 import InventoryView from "./views/InventoryView.vue";
@@ -121,6 +121,7 @@ onUnmounted(()=>{
               height="30"
               stroke="black"
               fill="black"
+              class="back"
               @click="journey('back')"
               :disabled="journeyBackDisabled"
           />
@@ -131,6 +132,7 @@ onUnmounted(()=>{
                 height="30"
                 stroke="black"
                 fill="black"
+                class="forward"
                 @click="journey('forward')"
                 :disabled="journeyForwardDisabled"
           />
