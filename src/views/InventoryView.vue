@@ -7,19 +7,19 @@ defineProps(['inventory'])
   <div class="inventory">
     <div class="navLevelItems">
       <RouterLink :to="{name: 'HtmlView'}">
-        <img :class="(!inventory['/html']) ? 'notVisited' : null" src="../assets/logos/html_logo.png" alt="html logo"/>
+        <img :class="(!inventory['/html']) ? 'notVisited' : 'visited'" src="../assets/logos/html_logo.png" alt="html logo"/>
       </RouterLink>
       <RouterLink :to="{name: 'CssView'}">
-        <img :class="(!inventory['/css']) ? 'notVisited' : null" src="../assets/logos/css_logo.png" alt="css logo"/>
+        <img :class="(!inventory['/css']) ? 'notVisited' : 'visited'" src="../assets/logos/css_logo.png" alt="css logo"/>
       </RouterLink>
       <RouterLink :to="{name: 'JavaScriptView'}">
-        <img :class="(!inventory['/js']) ? 'notVisited' : null" src="../assets/logos/javascript-node-js-logo.png" alt="js logo"/>
+        <img :class="(!inventory['/js']) ? 'notVisited' : 'visited'" src="../assets/logos/javascript-node-js-logo.png" alt="js logo"/>
       </RouterLink>
       <RouterLink :to="{name: 'GitView'}">
-        <img :class="(!inventory['/git']) ? 'notVisited' : null" src="../assets/logos/git-icon-white.png" alt="git logo"/>
+        <img :class="(!inventory['/git']) ? 'notVisited' : 'visited'" src="../assets/logos/git-icon-white.png" alt="git logo"/>
       </RouterLink>
       <RouterLink :to="{name: 'VueView'}">
-        <img :class="(!inventory['/vue']) ? 'notVisited' : null" src="../assets/logos/vue_logo.png" alt="vue logo"/>
+        <img :class="(!inventory['/vue']) ? 'notVisited' : 'visited'" src="../assets/logos/vue_logo.png" alt="vue logo"/>
       </RouterLink>
 
     </div>
