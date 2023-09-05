@@ -1,60 +1,61 @@
 <script setup>
-import useInventory from "./composables/useInventory.js";
-import {computed, onMounted, onUnmounted, ref} from 'vue';
-import {useRouter, useRoute} from 'vue-router';
-import Home from "./views/Home.vue";
-import InventoryView from "./views/InventoryView.vue";
-import { onKeyDown, useSwipe } from "@vueuse/core";
+// import useInventory from "./composables/useInventory.js";
+import {onMounted, onUnmounted, ref} from 'vue';
+// import {useRouter, useRoute} from 'vue-router';
+// import Home from "./views/Home.vue";
+// import InventoryView from "./views/InventoryView.vue";
+// import { onKeyDown, useSwipe } from "@vueuse/core";
+import ResumeView from "./views/ResumeView.vue";
 
-const router = useRouter();
-const routes = router.getRoutes();
-const route = useRoute();
-
-const {inventory} = useInventory();
-const screenContentElement = ref(null);
-useSwipe(screenContentElement, {
-  onSwipeEnd: (e, direction)=> {
-    const swipeMap = {
-      'right': 'back',
-      'left': 'forward'
-    }
-    const journeyDirection = swipeMap[direction];
-    if(journeyDirection) {
-      journey(journeyDirection);
-    }
-  }
-});
-const labelMap = {
-  '/': 'Home',
-  '/html': 'HTML',
-  '/css': 'CSS',
-  '/js': 'JavaScript',
-  '/git': 'Git',
-  '/vue': 'Vue',
-  '/resume': 'Resume',
-}
-const journey = (direction) => {
-    const index = routes.findIndex((element) => element.path === route.path)
-  if(
-      (direction === 'forward' && route.path !== '/resume') ||
-      (direction === 'back' && route.path !== '/')
-  ) {
-    const nextRoute = (direction === 'forward') ? routes[index + 1] : routes[index - 1]
-    router.push(nextRoute);
-  }
-}
-onKeyDown('ArrowRight', ()=> {
-  journey('forward');
-})
-onKeyDown('ArrowLeft', ()=> {
-  journey('back');
-})
-const journeyForwardDisabled = computed(()=> {
-  return route.path === '/resume';
-})
-const journeyBackDisabled = computed(()=> {
-  return route.path === '/';
-})
+// const router = useRouter();
+// const routes = router.getRoutes();
+// const route = useRoute();
+//
+// const {inventory} = useInventory();
+// const screenContentElement = ref(null);
+// useSwipe(screenContentElement, {
+//   onSwipeEnd: (e, direction)=> {
+//     const swipeMap = {
+//       'right': 'back',
+//       'left': 'forward'
+//     }
+//     const journeyDirection = swipeMap[direction];
+//     if(journeyDirection) {
+//       journey(journeyDirection);
+//     }
+//   }
+// });
+// const labelMap = {
+//   '/': 'Home',
+//   '/html': 'HTML',
+//   '/css': 'CSS',
+//   '/js': 'JavaScript',
+//   '/git': 'Git',
+//   '/vue': 'Vue',
+//   '/resume': 'Resume',
+// }
+// const journey = (direction) => {
+//     const index = routes.findIndex((element) => element.path === route.path)
+//   if(
+//       (direction === 'forward' && route.path !== '/resume') ||
+//       (direction === 'back' && route.path !== '/')
+//   ) {
+//     const nextRoute = (direction === 'forward') ? routes[index + 1] : routes[index - 1]
+//     router.push(nextRoute);
+//   }
+// }
+// onKeyDown('ArrowRight', ()=> {
+//   journey('forward');
+// })
+// onKeyDown('ArrowLeft', ()=> {
+//   journey('back');
+// })
+// const journeyForwardDisabled = computed(()=> {
+//   return route.path === '/resume';
+// })
+// const journeyBackDisabled = computed(()=> {
+//   return route.path === '/';
+// })
 
 const screenWidth = ref(window.innerWidth)
 
@@ -71,112 +72,6 @@ onUnmounted(()=>{
 
 <template>
   <div class="app">
-    <div
-        class="screenContent"
-        ref="screenContentElement"
-    >
-      <div class="contentHolder">
-        <RouterView v-slot="{ Component }">
-          <Transition mode="out-in">
-            <component :is="Component" />
-          </Transition>
-        </RouterView>
-      </div>
-    </div>
-    <div class="top"></div>
-    <div class="borderTop"></div>
-    <div class="left"
-         v-if="screenWidth > 600"
-    >
-      <div class="navLeft">
-        <ul>
-          <li v-for="item in routes">
-            <RouterLink
-              :to="{name: item.name}"
-              :class="{active: item.name === route.name}"
-            >{{labelMap[item.path]}}</RouterLink>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="right" v-if="screenWidth >= 750"></div>
-    <div class="bottom"></div>
-    <div class="belowScreen">
-      <div class="buttonBar">
-        <RouterLink :to="{name: 'ResumeView'}" class="resumeButton">Skip to Resume</RouterLink>
-      </div>
-      <div class="directionPad">
-        <svg
-            width="120"
-            height="120"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-          <RouterLink :to="{name: 'Home'}">
-            <rect x="40" y="14" width="30" height="30" stroke="black" fill="black"/>
-          </RouterLink>
-          <rect
-              x="9"
-              y="45"
-              width="30"
-              height="30"
-              stroke="black"
-              fill="black"
-              class="back"
-              @click="journey('back')"
-              :disabled="journeyBackDisabled"
-          />
-          <rect x="40" y="45" width="30" height="30" stroke="black" fill="black"/>
-          <rect x="71"
-                y="45"
-                width="30"
-                height="30"
-                stroke="black"
-                fill="black"
-                class="forward"
-                @click="journey('forward')"
-                :disabled="journeyForwardDisabled"
-          />
-          <RouterLink :to="{name: 'ResumeView'}">
-            <rect x="40" y="76" width="30" height="30" stroke="black" fill="black"/>
-          </RouterLink>
-        </svg>
-      </div>
-      <InventoryView
-          :inventory="inventory"
-      />
-    </div>
+    <ResumeView />
   </div>
 </template>
-
-<style scoped>
-ul {
-  list-style: none;
-}
-.directionPad {
-  display: flex;
-  justify-content: center;
-}
-.router-link-active {
-  color: #b20260;
-}
-.resumeButton {
-  display: inline-block;
-  text-decoration: none;
-  padding: 8px;
-  color: #ddd;
-  border-radius: 8px;
-  background-color: #000;
-  box-shadow: 0 0 3px #dddddd;
-}
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s ease;
-  position: absolute;
-  width: 100%;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>

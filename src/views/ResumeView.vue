@@ -2,16 +2,18 @@
 const skillList = [
     'JavaScript',
     'Vue',
+    'Git/GitLab/GitHub',
     'HTML5',
-    'CSS3',
+    'CSS3/SCSS/SASS',
     'Vuetify',
     'Bootstrap',
-    'Git',
-    'GitLab/GitHub',
     'API Integration',
+    'SQL/Mongo Queries',
     'Agile Development',
     'IntelliJ IDEA',
     'Node.js/Express/Koa',
+    'Jest Unit Tests',
+    'Postman/Manual Testing',
     'Angular',
     'Java'
 ]
@@ -23,6 +25,14 @@ const skillList = [
     <div class="wrapper">
       <div class="one">
         <h4>Relevant Experience</h4>
+        <p><strong>Software Development and Documentation QA</strong></p>
+        <p>Freelance</p>
+        <p>April 2023 – Present</p>
+        <ul>
+          <li>Website and Web Application Development</li>
+          <li>Website Design and UX Consultations</li>
+          <li>Documentation Review, Processing, and/or Data Entry</li>
+        </ul>
         <p><strong>Junior Software Developer</strong></p>
         <p>CityGro</p>
         <p>June 2022 – April 2023</p>
@@ -39,8 +49,8 @@ const skillList = [
                 any identifying information for the original customers.</li>
             </ul>
           </li>
-          <li>Worked with development and project management tools: Slack, GitLab, Clickup, IntelliJ IDEA.</li>
-          <li>Completed over 80 tickets, including bug ﬁxes and feature requests.</li>
+          <li>Worked with development and project management tools: Slack, GitLab, ClickUp, IntelliJ IDEA.</li>
+          <li>Completed over 90 tickets, including bug ﬁxes and feature requests.</li>
         </ul>
         <p><strong>Associate (Software Developer)</strong></p>
         <p>Infosys</p>
@@ -95,17 +105,22 @@ p {
   padding: 8px;
   margin: 8px;
 }
+.imageHolder {
+  text-align: center;
+}
 @media (min-width: 750px) {
   .wrapper {
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
   }
   .one {
     width: 60%
   }
   .two {
+    padding-left: 8px;
     margin-left: 5%;
-    width: 25%;
+    width: 35%;
   }
 }
 </style>
